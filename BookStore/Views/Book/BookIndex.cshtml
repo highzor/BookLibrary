@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Внесение книг</title>
+</head>
+<body>
+    <div>
+        <h3>Форма регистрации книги</h3>
+        <form method="post" action="LoadUp">
+            <table>
+                <tr>
+                    <td><p>Введите название книги :</p></td>
+                    <td><input type="text" name="Name" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Введите автора :</p></td>
+                    <td>
+                        <input type="text" name="Author.Name" />
+                    </td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+            <table>
+                <tr>
+                    <td><p>Название</p></td>
+                    <td><p>Автор</p></td>
+                    <td></td>
+                </tr>
+                @foreach (var b in ViewBag.Books)
+                {
+                    <tr>
+                        <td><p>@b.Name</p></td>
+                        <td><p>@b.Author</p></td>
+                    </tr>
+                }
+            </table>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Аренда книг</title>
+</head>
+<body>
+    <div>
+        <h3>Форма аренды книг</h3>
+        <form method="post" action="RentMethod">
+            <table>
+                <tr>
+                    <td><p>Выберите название книги :</p></td>
+                    <td>
+                        <select name="bookId">
+                            @foreach (var a in ViewBag.Books)
+                            {
+                                <option value="@a.BookId">@a.Name  (@a.Author)</option>
+
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Выберите клиента :</p></td>
+                    <td>
+                        <select name="holderId">
+                            @foreach (var d in ViewBag.Holders)
+                            {
+                                <option value="@d.HolderId">@d.Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input name="act" type="submit" value="Отправить" />
+                    </td>
+                    <td>
+                        <input name="act" type="submit" value="Удалить" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+            <table style="float:left;">
+                <tr style="width: auto;">
+                    <td><p>Название</p></td>
+                    <td><p>Автор</p></td>
+                    <td><p>Клиент</p></td>
+                    <td></td>
+                </tr>
+                @foreach (var book in ViewBag.Books)
+                {
+                    <tr>
+                        <td><p>@book.Name</p></td>
+                        <td><p>@book.Author</p></td>
+                        <td>
+                            @foreach (var holder in book.Holder)
+                            {
+                                <p><a href="/Holder/Info?holderId=@holder.HolderId">@holder.Name</a></p>
+                            }
+                        </td>
+                        @*<td><p>@holder.Holder</p></td>*@
+                    </tr>
+                }
+            </table>
+            @*<table>
+                    <tr>
+                        <td><p>Владелец</p></td>
+                        <td></td>
+                    </tr>
+                    @foreach (var v in ViewBag.Holders)
+                    {
+                        <tr>
+                            <td><p><a href="/Holder/Info/@v.HolderId">@v.Name</a></p></td>
+                        </tr>
+                    }
+                </table>*@
+        </form>
+    </div>
+</body>
+</html>

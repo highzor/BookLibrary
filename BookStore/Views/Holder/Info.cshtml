@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Информация</title>
+</head>
+<body>
+    <div>
+        <h3>Информация о клиенте</h3>
+        <table style="float:left;">
+            <tr style="width: auto;">
+                <td><p>Имя</p></td>
+                <td><p>Возраст</p></td>
+                <td><p>Адрес</p></td>
+                <td><p>Книги</p></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td><p>@ViewBag.Holders.Name</p></td>
+                <td><p>@ViewBag.Holders.Age</p></td>
+                <td><p>@ViewBag.Holders.Address</p></td>
+                <td>
+                    @foreach (var book in ViewBag.Holders.Books)
+                    {
+                        <p>@book.Name</p>
+                    }
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+</body>
+</html>
